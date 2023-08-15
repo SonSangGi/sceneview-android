@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -93,15 +94,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             title = ""
         })
         statusText = findViewById(R.id.statusText)
-        sceneView = findViewById<ArSceneView?>(R.id.sceneView).apply {
+
+        sceneView = ArSceneView(this, lifecycle = this.lifecycle).apply {
             lightEstimationMode = Config.LightEstimationMode.ENVIRONMENTAL_HDR
             depthEnabled = true
             instantPlacementEnabled = true
-            onArTrackingFailureChanged = { reason ->
-                statusText.text = reason?.getDescription(context)
-                statusText.isGone = reason == null
-            }
         }
+        val rootView = findViewById<ConstraintLayout>(R.id.rootView)
+        rootView.addView(sceneView)
+
         loadingView = findViewById(R.id.loadingView)
         newModelButton = findViewById<ExtendedFloatingActionButton>(R.id.newModelButton).apply {
             // Add system bar margins

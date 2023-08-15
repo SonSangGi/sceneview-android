@@ -3,6 +3,7 @@ package io.github.sceneview.ar
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.filament.Engine
 import com.google.android.filament.IndirectLight
@@ -35,13 +36,15 @@ open class ArSceneView @JvmOverloads constructor(
     engine: Engine = Filament.retain(),
     val sessionFeatures: Set<Session.Feature> = setOf(),
     override val cameraNode: ArCameraNode = ArCameraNode(engine),
+    lifecycle: Lifecycle? = null,
 ) : SceneView(
     context,
     attrs,
     defStyleAttr,
     defStyleRes,
     engine,
-    cameraNode
+    cameraNode,
+    lifecycle
 ) {
 
     open val arCore = ARCore(

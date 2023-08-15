@@ -58,7 +58,8 @@ open class SceneView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
     defStyleRes: Int = 0,
     val engine: Engine = Filament.retain(),
-    cameraNode: CameraNode = CameraNode(engine)
+    cameraNode: CameraNode = CameraNode(engine),
+    open var lifecycle: Lifecycle? = null,
 ) : SurfaceView(context, attrs, defStyleAttr, defStyleRes),
     DefaultLifecycleObserver,
     Choreographer.FrameCallback,
@@ -307,8 +308,6 @@ open class SceneView @JvmOverloads constructor(
         renderCallback = SurfaceCallback()
         attachTo(this@SceneView)
     }
-
-    open val lifecycle: Lifecycle? get() = findViewTreeLifecycleOwner()?.lifecycle
 
     val coroutineScope get() = lifecycle?.coroutineScope
 
