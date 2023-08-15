@@ -28,6 +28,7 @@ android {
     aaptOptions {
         noCompress 'filamat', 'ktx'
     }
+    namespace 'io.github.sceneview.sample.araugmentedimage'
 }
 
 dependencies {
