@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         })
         statusText = findViewById(R.id.statusText)
 
-        sceneView = ArSceneView(this, lifecycle = this.lifecycle).apply {
+        sceneView = ArSceneView(this).apply {
             lightEstimationMode = Config.LightEstimationMode.ENVIRONMENTAL_HDR
             depthEnabled = true
             instantPlacementEnabled = true
