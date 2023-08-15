@@ -126,4 +126,3 @@ dependencies {
     implementation "com.github.kittinunf.fuel:fuel-coroutines:2.3.1"
 }
 
-apply plugin: "com.vanniktech.maven.publish"

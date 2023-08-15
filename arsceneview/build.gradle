@@ -59,5 +59,3 @@ dependencies {
     // ARCore
     api "com.google.ar:core:1.37.0"
 }
-
-apply plugin: "com.vanniktech.maven.publish"

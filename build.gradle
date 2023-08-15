@@ -7,8 +7,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:8.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21"
-        // Maven Central Publish
-        classpath "com.vanniktech:gradle-maven-publish-plugin:0.18.0"
         // Dokka
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.7.10"
     }
@@ -48,14 +46,6 @@ afterEvaluate {
                 // Suffix which is used to append the line number to the URL. Use #L for GitHub
                 remoteLineSuffix.set("#L")
             }
-        }
-    }
-}
-
-allprojects {
-    plugins.withId("com.vanniktech.maven.publish") {
-        mavenPublish {
-            sonatypeHost = "S01"
         }
     }
 }
